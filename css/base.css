@@ -1,0 +1,45 @@
+@import url('qanelas-soft-cufonfonts-webfont/Radomir\ Tinkov\ \ QanelasSoftMedium.woff');
+
+:root {
+    --color-black: #1D1D1D;
+    --color-white: #FFFFFF;
+    --color-cyan: #4CEAD7;
+    --color-gray: #505050;
+    --color-green: #A1FF58;
+}
+
+
+* {
+    margin: 0;
+    font-style: none;
+    text-decoration: none;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font-family: 'Qanelas Soft', sans-serif;
+    vertical-align: baseline;
+    box-sizing: border-box;
+}
+
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+    height: 90px;
+    padding: 38px 38px;
+
+    background-color: var(--color-black);
+}
+
+nav .items-menu{
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+nav .items-menu a{
+    color: #FFFFFF;
+}
