@@ -2,18 +2,22 @@
 @import url('qanelas-soft-cufonfonts-webfont/Radomir\ Tinkov\ \ QanelasSoftLight.woff');
 @import url('qanelas-soft-cufonfonts-webfont/Radomir\ Tinkov\ \ QanelasSoftMedium.woff');
 @import url('qanelas-soft-cufonfonts-webfont/Radomir\ Tinkov\ \ QanelasSoftRegular.woff');
+
 @font-face {
     font-family: 'QanelasSoftUltraLight';
     src: url('qanelas-soft-cufonfonts-webfont/Radomir\ Tinkov\ \ QanelasSoftUltraLight.woff') format('woff');
 }
+
 @font-face {
     font-family: 'QanelasSoftLight';
     src: url('qanelas-soft-cufonfonts-webfont/Radomir Tinkov \ QanelasSoftLight.woff') format('woff');
 }
+
 @font-face {
     font-family: 'QanelasSoftMedium';
     src: url('qanelas-soft-cufonfonts-webfont/Radomir Tinkov \ QanelasSoftMedium.woff') format('woff');
 }
+
 @font-face {
     font-family: 'QanelasSoftRegular';
     src: url('qanelas-soft-cufonfonts-webfont/Radomir Tinkov \ QanelasSoftRegular.woff') format('woff');
@@ -41,7 +45,7 @@
     box-sizing: border-box;
 }
 
-nav{
+nav {
     position: fixed;
     display: flex;
     flex-direction: row;
@@ -55,7 +59,16 @@ nav{
     background-color: var(--color-black);
 }
 
-nav .items-menu{
+nav .logo {
+    height: 90px;
+}
+
+nav .logo img {
+    height: 100%;
+    width: 100%;
+}
+
+nav .items-menu {
     display: flex;
     flex-direction: row;
     gap: 30px;
@@ -63,11 +76,12 @@ nav .items-menu{
 
 /* SESSOES */
 
-body, html {
+body,
+html {
     scroll-snap-type: y mandatory;
 }
 
-section{
+section {
     height: 100vh;
     width: 100%;
     padding: 0 125px;
@@ -76,39 +90,74 @@ section{
 }
 
 /* SESSAO SOBRE */
-#sobre{
-    background-image: a colocar;
+#sobre {
+    background-image: url('../images/imagem.png');
 }
 
 /* SESSAO SOLUÇÕES */
-#solucoes{
+#solucoes {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-#solucoes h1{
+@keyframes slideFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideFromRight {
+    0% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+#solucoes h1 {
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+#solucoes p {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+#solucoes h1 {
     font-size: 50px;
     letter-spacing: 2px;
     font-family: 'QanelasSoftUltraLight', sans-serif;
 
     margin-bottom: 100px;
 }
-#solucoes h1 b{
+
+#solucoes h1 b {
     font-family: 'QanelasSoftMedium', sans-serif;
 }
-#solucoes p{
+
+#solucoes p {
     letter-spacing: 1px;
     font-family: 'QanelasSoftUltraLight', sans-serif;
 }
 
 /* SESSAO CASES */
-#cases{
+#cases {
     display: flex;
     flex-direction: row;
 
-    padding: 150px 250px 100px 250px;  
+    padding: 150px 250px 100px 250px;
 }
-#cases .collum-main{
+
+#cases .collum-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,24 +166,28 @@ section{
 
     width: 40%;
 }
-#cases .collum-main .cases{
+
+#cases .collum-main .cases {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 40px;
 }
-#cases .collum-main .cases h2{
+
+#cases .collum-main .cases h2 {
     letter-spacing: 2px;
     font-size: 30px;
 }
-#cases .collum-main .imgCases{
+
+#cases .collum-main .imgCases {
     width: 120px;
     height: 120px;
     object-fit: contain;
     background-color: #4CEAD7;
 }
-#cases .collum-desc{
+
+#cases .collum-desc {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -143,28 +196,77 @@ section{
     width: 60%;
     padding-left: 80px;
 }
-#cases .collum-desc ul li{
+
+#cases .collum-desc ul li {
     font-family: 'QanelasSoftUltraLight', sans-serif;
 }
-#cases .divisor{
+
+#cases .divisor {
     width: 2px;
     background-color: var(--color-white);
 }
 
+/* SESSÃO INSIGHTS */
+#insights {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 160px;
+}
 
+#insights h2 {
+    position: relative;
+    font-size: 80px;
+    bottom: 0px;
+    right: 500px;
+}
 
-#clientes{
+#insights .insights {
+    display: flex;
+    flex-direction: row;
+    gap: 150px;
+}
+
+#insights .insights .dados {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#clientes h2{
+
+#insights .insights .dados .expo {
+    font-size: 50px !important;
+    vertical-align: super;
+    font-size: smaller;
+}
+
+#insights .insights .dados .numero {
+    font-size: 80px;
+    font-family: 'QanelasSoftMedium', sans-serif;
+}
+
+#insights .insights .dados .titulo {
+    font-size: 40px;
+    font-family: 'QanelasSoftUltraLight', sans-serif;
+    text-align: center;
+}
+
+/* SSESSÃO CLIENTES */
+#clientes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#clientes h2 {
     position: relative;
     font-size: 80px;
     bottom: 50px;
     right: 500px;
 }
+
 #clientes .gridClientes {
     position: relative;
     top: 80px;
@@ -176,25 +278,127 @@ section{
     gap: 5px;
     padding: 0 200px;
 }
-#clientes .gridClientes .logoCliente{
+
+#clientes .gridClientes .logoCliente {
     width: 150px;
     height: 150px;
     object-fit: contain;
     background-color: #505050;
 }
-#clientes .gridClientes .logoCliente .imgCliente{
+
+#clientes .gridClientes .logoCliente .imgCliente {
     width: 100%;
     height: 100%;
 }
 
+/* SESSÃO FEEDBACKS */
+#feedbacks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 160px;
+}
 
-#contato{
+#feedbacks h2 {
+    position: relative;
+    font-size: 80px;
+    top: 100px;
+    right: 450px;
+}
+
+#feedbacks .slider {
+    position: relative;
+    display: flex;
+    width: 70%;
+    height: 400px;
+    margin: auto;
+    overflow: hidden;
+    background-color: #333;
+}
+
+#feedbacks .slider .slides-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+#feedbacks .slider .slides-container .slide {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+#feedbacks .slider .slides-container .slide .imgFeedback {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+#feedbacks .slider .slides-container .slide .imgFeedback img {
+    width: 100%;
+    height: 100%;
+}
+
+#feedbacks .slider .slides-container .slide .slide-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+}
+
+#feedbacks .slider .slides-container .slide .slide-text h2,
+#feedbacks .slider .slides-container .slide .slide-text p {
+    opacity: 0.7;
+    font-family: 'QanelasSoftUltraLight', sans-serif;   
+    font-size: 14px; 
+    text-align: center;
+    top: 0px;
+    right: 0px;
+}
+#feedbacks .slider .slides-container .slide .slide-text h4 {
+    font-family: 'QanelasSoftMedium', sans-serif;
+    font-size: 15px;
+    margin-top: 15px;
+}
+
+#feedbacks .slide-arrow {
+    position: absolute;
+    transform: translateY(130px);
+    background: none;
+    border: none;
+    color: white;
+    font-size: 70px;
+    cursor: pointer;
+}
+
+#feedbacks .left-arrow {
+    left: 100px;
+}
+
+#feedbacks .right-arrow {
+    right: 100px;
+}
+
+/* Optional: Add some transition effect */
+.slides-container {
+    transition: transform 0.5s ease;
+}
+
+
+/* SESSÃO CONTATO */
+#contato {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#contato .contato{
+
+#contato .contato {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -202,16 +406,19 @@ section{
     height: 80%;
     gap: 20px;
 }
-#contato .contato h2{
+
+#contato .contato h2 {
     font-size: 80px;
     letter-spacing: 2px;
 }
-#contato .contato .redesSociais{
+
+#contato .contato .redesSociais {
     display: flex;
     flex-direction: row;
     gap: 10px;
 }
-#contato .contato .redesSociais .iconsSociais{
+
+#contato .contato .redesSociais .iconsSociais {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -221,10 +428,25 @@ section{
     border: 1px solid var(--color-white);
     border-radius: 50%;
 }
-#contato .copyright{
+
+#contato .copyright {
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 20%;
     gap: 10px;
+}
+
+#contato .copyright span {
+    font-family: 'QanelasSoftUltraLight', sans-serif;
+    opacity: 0.7;
+}
+
+#contato .logo {
+    height: 90px;
+}
+
+#contato .logo img {
+    height: 100%;
+    width: 100%;
 }
