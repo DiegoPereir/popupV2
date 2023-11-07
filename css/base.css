@@ -57,17 +57,19 @@ nav {
     height: 90px;
     padding: 38px 38px;
     background-color: var(--color-black);
+    z-index: 999;
 }
+
 html {
     scroll-behavior: smooth;
-  }
-  
+}
+
 .active-nav-item {
     color: var(--color-cyan);
     border-bottom: 2px solid var(--color-cyan);
-  }
+}
 
-  
+
 nav .logo {
     height: 90px;
 }
@@ -111,7 +113,7 @@ nav .items-menu {
 }
 
 .navbar-logo img {
-    width: 50px;
+    width: 90px;
     height: auto;
 }
 
@@ -150,21 +152,28 @@ nav .items-menu {
 }
 
 .navbar-links:hover {
-    color:   var(--color-cyan);
+    color: var(--color-cyan);
 }
+
 .navbar-menu {
     /* ... suas outras propriedades ... */
-    z-index: 1000; /* Este valor é geralmente suficiente para ficar acima de outros elementos. */
+    z-index: 1000;
+    /* Este valor é geralmente suficiente para ficar acima de outros elementos. */
 }
 
 /* Estilos para telas menores (mobile) */
 @media screen and (max-width: 960px) {
     .navbar-item {
-        width: 100%; /* Garantir que os itens da lista ocupem a largura total */
-        display: flex; /* Habilitar flexbox para os itens da lista */
-        justify-content: center; /* Centralizar horizontalmente */
-        align-items: center; /* Centralizar verticalmente */
+        width: 100%;
+        /* Garantir que os itens da lista ocupem a largura total */
+        display: flex;
+        /* Habilitar flexbox para os itens da lista */
+        justify-content: center;
+        /* Centralizar horizontalmente */
+        align-items: center;
+        /* Centralizar verticalmente */
     }
+
     .navbar-toggle {
         display: block;
     }
@@ -174,7 +183,8 @@ nav .items-menu {
         flex-direction: column;
         width: 100%;
         position: absolute;
-        top: 80px; /* Valor ajustado para posicionar o menu mais abaixo */
+        top: 80px;
+        /* Valor ajustado para posicionar o menu mais abaixo */
         left: -100%;
         opacity: 0;
         transition: all 0.3s ease;
@@ -187,7 +197,8 @@ nav .items-menu {
         opacity: 1;
         transition: all 0.3s ease;
         z-index: 1;
-        top: 90px; /* Este é o novo valor que fará o menu ativo aparecer mais abaixo */
+        top: 90px;
+        /* Este é o novo valor que fará o menu ativo aparecer mais abaixo */
     }
 }
 
@@ -211,7 +222,6 @@ body,
 html {
     scroll-snap-type: y mandatory;
 }
-
 section {
     height: 100vh;
     width: 100%;
@@ -223,11 +233,16 @@ section {
 /* SESSAO SOBRE */
 #sobre {
     background-image: url('../images/imagem.png');
-    background-size: cover; /* Garante que a imagem cubra toda a seção */
-    background-position: center; /* Centraliza a imagem na seção */
-    background-repeat: no-repeat; /* Impede que a imagem se repita */
-    height: 100vh; /* Define a altura da seção para a altura total da tela */
-    width: 100%; /* Define a largura da seção para a largura total da tela */
+    background-size: cover;
+    /* Garante que a imagem cubra toda a seção */
+    background-position: center;
+    /* Centraliza a imagem na seção */
+    background-repeat: no-repeat;
+    /* Impede que a imagem se repita */
+    height: 100vh;
+    /* Define a altura da seção para a altura total da tela */
+    width: 100%;
+    /* Define a largura da seção para a largura total da tela */
 }
 
 
@@ -236,33 +251,50 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow-x: hidden;
 }
-@keyframes slideFromLeft {
+/* Adicione estilos iniciais para os elementos que serão animados */
+#solucoes h1, #solucoes p {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  
+  #solucoes p {
+    transform: translateX(100%);
+  }
+  
+  /* Defina as keyframes para as animações de 'entrar' */
+  @keyframes slideInFromLeft {
     0% {
-        transform: translateX(-100%);
-        opacity: 0;
+      transform: translateX(-100%);
+      opacity: 0;
     }
     100% {
-        transform: translateX(0);
-        opacity: 1;
+      transform: translateX(0);
+      opacity: 1;
     }
-}
-
-@keyframes slideFromRight {
+  }
+  
+  @keyframes slideInFromRight {
     0% {
-        transform: translateX(100%);
-        opacity: 0;
+      transform: translateX(100%);
+      opacity: 0;
     }
     100% {
-        transform: translateX(0);
-        opacity: 1;
+      transform: translateX(0);
+      opacity: 1;
     }
-}
-
-
-
-
-
+  }
+  
+  /* Crie uma classe para iniciar a animação */
+  .animate-in-h1 {
+    animation: slideInFromLeft 1s forwards;
+  }
+  
+  .animate-in-p {
+    animation: slideInFromRight 1s forwards;
+  }
+  
 #solucoes h1 {
     font-size: 50px;
     letter-spacing: 2px;
@@ -287,7 +319,38 @@ section {
 
     padding: 150px 250px 100px 250px;
 }
-
+/* Estilos iniciais para os elementos que serão animados */
+.cases, .collum-desc ul {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  
+  /* Defina as keyframes para as animações de 'subir' */
+  @keyframes slideInFromBottom {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Crie classes para iniciar as animações */
+  .animate-in {
+    animation: slideInFromBottom 1s forwards;
+  }
+  
+  /* Definir atrasos de animação para elementos subsequentes */
+  .cases:nth-child(2), .collum-desc ul:nth-child(2) {
+    animation-delay: 0.3s;
+  }
+  
+  .cases:nth-child(3), .collum-desc ul:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+  
 #cases .collum-main {
     display: flex;
     flex-direction: column;
@@ -315,7 +378,7 @@ section {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    background-color:  var(--color-cyan);
+    background-color: var(--color-cyan);
 }
 
 #cases .collum-desc {
@@ -330,11 +393,91 @@ section {
 
 #cases .collum-desc ul li {
     font-family: 'QanelasSoftUltraLight', sans-serif;
+    white-space: wrap;
 }
 
 #cases .divisor {
     width: 2px;
     background-color: var(--color-white);
+}
+
+#casesCards {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+#casesCards .gridCases {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    bottom: 20px;
+    gap: 15px;
+}
+
+#casesCards .gridCases .logoCase {
+    width: 250px;
+    height: 300px;
+    background-color: #505050;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 20px 10px;
+    gap: 20px;
+}
+#casesCards .gridCases .logoCase:hover::before {
+    background-color: transparent;
+    transition: 0.5s;
+}
+#casesCards .gridCases .logoCase:hover h3,
+#casesCards .gridCases .logoCase:hover p {
+    display: none;
+}
+#casesCards .gridCases .logoCase::before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.395); /* Cor de sobreposição escura (ajuste conforme necessário) */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Coloca a sobreposição atrás do conteúdo */
+}
+#casesCards .gridCases .logoCase h3,
+#casesCards .gridCases .logoCase p,
+#casesCards .gridCases .logoCase span{
+    z-index: 1;
+}
+#casesCards .gridCases .logoCase h3,
+#casesCards .gridCases .logoCase p {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+
+#casesCards .gridCases .logoCase span {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+}
+#casesCards .gridCases .logoCase span i.fa {
+    font-size: 12px;
+}
+
+#casesCards .gridCases #postagem1 {
+    background-image: url('../images/imagem.png');
+    background-size: cover;
+    /* Faz com que a imagem se ajuste dentro do elemento, mantendo a proporção */
+    background-repeat: no-repeat;
+    /* Impede que a imagem se repita */
+    background-position: center;
+    /* Centraliza a imagem no elemento */
 }
 
 /* SESSÃO INSIGHTS */
@@ -350,7 +493,9 @@ section {
     position: relative;
     font-size: 80px;
     bottom: 0px;
-    right: 500px;
+    right: 0px;
+    display: flex;
+    align-self: flex-start;
 }
 
 #insights .insights {
@@ -394,8 +539,10 @@ section {
 #clientes h2 {
     position: relative;
     font-size: 80px;
-    bottom: 50px;
-    right: 500px;
+    bottom: 0px;
+    right: 0px;
+    display: flex;
+    align-self: flex-start;
 }
 
 #clientes .gridClientes {
@@ -435,7 +582,9 @@ section {
     position: relative;
     font-size: 80px;
     top: 100px;
-    right: 450px;
+    right: 0px;
+    display: flex;
+    align-self: flex-start;
 }
 
 #feedbacks .slider {
@@ -485,12 +634,13 @@ section {
 #feedbacks .slider .slides-container .slide .slide-text h2,
 #feedbacks .slider .slides-container .slide .slide-text p {
     opacity: 0.7;
-    font-family: 'QanelasSoftUltraLight', sans-serif;   
-    font-size: 14px; 
+    font-family: 'QanelasSoftUltraLight', sans-serif;
+    font-size: 14px;
     text-align: center;
     top: 0px;
     right: 0px;
 }
+
 #feedbacks .slider .slides-container .slide .slide-text h4 {
     font-family: 'QanelasSoftMedium', sans-serif;
     font-size: 15px;
@@ -553,13 +703,16 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 30px;
     height: 30px;
     border: 1px solid var(--color-white);
     border-radius: 50%;
 }
-
+#contato .contato .redesSociais .iconsSociais:hover{
+    transition: 0.3s;
+    transform: translateY(-5px);
+    background-color: var(--color-green);
+}
 #contato .copyright {
     display: flex;
     align-items: center;
@@ -590,16 +743,19 @@ html {
 
 /* Breakpoints para diferentes tamanhos de tela */
 @media (max-width: 1200px) {
+
     /* Para tablets horizontais e desktops menores */
     section {
         padding: 0 60px;
     }
 
-    #cases, #clientes .gridClientes {
+    #cases,
+    #clientes .gridClientes {
         padding: 0 50px;
     }
 
-    #feedbacks h2, #clientes h2 {
+    #feedbacks h2,
+    #clientes h2 {
         font-size: 60px;
         right: 10%;
     }
@@ -611,45 +767,57 @@ html {
 }
 
 @media (max-width: 992px) {
+
     /* Para tablets verticais */
     nav .items-menu {
         flex-direction: column;
         gap: 10px;
     }
 
-    #cases, #clientes .gridClientes {
+    #cases,
+    #clientes .gridClientes {
         padding: 0 20px;
     }
 
-    #feedbacks, #clientes, #insights {
+    #feedbacks,
+    #clientes,
+    #insights {
         gap: 80px;
     }
 
-    #feedbacks h2, #clientes h2, #insights h2 {
+    #feedbacks h2,
+    #clientes h2,
+    #insights h2 {
         font-size: 50px;
         right: 5%;
     }
 
-    #solucoes h1, #cases .collum-main .cases h2, #insights .insights .dados .titulo {
+    #solucoes h1,
+    #cases .collum-main .cases h2,
+    #insights .insights .dados .titulo {
         font-size: 40px;
     }
 }
 
 @media (max-width: 768px) {
+
     /* Para dispositivos móveis em paisagem e tablets pequenos */
     html {
-        font-size: 14px; /* Reduzindo a fonte base */
+        font-size: 14px;
+        /* Reduzindo a fonte base */
     }
 
     section {
         padding: 0 30px;
     }
 
-    #cases, #clientes .gridClientes {
+    #cases,
+    #clientes .gridClientes {
         padding: 0 15px;
     }
 
-    nav .logo img, #contato .logo img {
+    nav .logo img,
+    #contato .logo img {
         height: 60px;
     }
 
@@ -659,6 +827,7 @@ html {
 }
 
 @media (max-width: 576px) {
+
     /* Para dispositivos móveis em retrato */
     nav {
         flex-direction: column;
@@ -669,7 +838,8 @@ html {
         height: 50px;
     }
 
-    #cases .collum-main, #cases .collum-desc {
+    #cases .collum-main,
+    #cases .collum-desc {
         width: 100%;
         padding: 0;
     }
@@ -678,7 +848,8 @@ html {
         flex-direction: column;
     }
 
-    #cases .divisor, #feedbacks .slide-arrow {
+    #cases .divisor,
+    #feedbacks .slide-arrow {
         display: none;
     }
 
@@ -687,13 +858,16 @@ html {
         height: 120px;
     }
 
-    #feedbacks h2, #clientes h2, #insights h2 {
+    #feedbacks h2,
+    #clientes h2,
+    #insights h2 {
         font-size: 40px;
         right: 0;
         bottom: 0;
     }
 
-    #insights .insights, #feedbacks .slider .slides-container .slide .slide-text {
+    #insights .insights,
+    #feedbacks .slider .slides-container .slide .slide-text {
         flex-direction: column;
         align-items: center;
     }
@@ -702,7 +876,9 @@ html {
         align-items: center;
     }
 
-    #solucoes h1, #cases .collum-main .cases h2, #insights .insights .dados .titulo {
+    #solucoes h1,
+    #cases .collum-main .cases h2,
+    #insights .insights .dados .titulo {
         font-size: 30px;
     }
 }
@@ -718,3 +894,38 @@ img {
     background-size: cover;
     background-position: center;
 }
+
+@keyframes shakeRotate {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+  }
+
+#whatsapp-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    bottom: 50px;
+    right: 50px;
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    border-radius: 50%;
+    border: 3px solid white;
+  }
+  
+  #whatsapp-button i.fab {
+    font-size: 50px;
+    transition: transform 0.3s ease; /* um efeito suave ao passar o mouse */
+  }
+  
+  #whatsapp-button:hover i.fab,
+  #whatsapp-button:hover{
+    color: var(--color-green);
+    border-color: var(--color-green);
+    background-color: var(--color-white);
+    animation: shakeRotate 0.5s ease-in-out;
+}
+  
