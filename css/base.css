@@ -58,7 +58,16 @@ nav {
 
     background-color: var(--color-black);
 }
+html {
+    scroll-behavior: smooth;
+  }
+  
+.active-nav-item {
+    color: #4CEAD7; /* Mude para a cor que você desejar */
+    border-bottom: 2px solid #4CEAD7; /* Mude para o estilo de borda que desejar */
+  }
 
+  
 nav .logo {
     height: 90px;
 }
@@ -92,7 +101,13 @@ section {
 /* SESSAO SOBRE */
 #sobre {
     background-image: url('../images/imagem.png');
+    background-size: cover; /* Garante que a imagem cubra toda a seção */
+    background-position: center; /* Centraliza a imagem na seção */
+    background-repeat: no-repeat; /* Impede que a imagem se repita */
+    height: 100vh; /* Define a altura da seção para a altura total da tela */
+    width: 100%; /* Define a largura da seção para a largura total da tela */
 }
+
 
 /* SESSAO SOLUÇÕES */
 #solucoes {
@@ -122,15 +137,9 @@ section {
     }
 }
 
-#solucoes h1 {
-    opacity: 0;
-    transform: translateX(-100%);
-}
 
-#solucoes p {
-    opacity: 0;
-    transform: translateX(100%);
-}
+
+
 
 #solucoes h1 {
     font-size: 50px;
@@ -450,3 +459,5 @@ section {
     height: 100%;
     width: 100%;
 }
+
+/*Responsividade*/

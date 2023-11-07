@@ -1,3 +1,86 @@
+document.addEventListener("DOMContentLoaded", () => {
+    window.addEventListener('wheel', event => {
+      event.preventDefault();
+      window.scrollBy({
+        top: event.deltaY < 0 ? -800 : 1000,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }, { passive: false });
+  });
+  
+  document.addEventListener("DOMContentLoaded", () => {
+    // Seleciona todos os itens da navegação
+    const navItems = document.querySelectorAll('nav a'); // Supondo que seus links estejam dentro de uma <nav> e sejam <a>
+  
+    // Função para remover a classe ativa de todos os itens e adicioná-la ao item clicado
+    function setActiveItem(clickedItem) {
+      navItems.forEach(item => {
+        item.classList.remove('active-nav-item');
+      });
+      clickedItem.classList.add('active-nav-item');
+    }
+  
+    // Adiciona o event listener para cada item da navegação
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        setActiveItem(e.currentTarget);
+      });
+    });
+  });
+  
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('section'); // Assumindo que suas seções são <section>
+    const navLinks = document.querySelectorAll('nav a');
+  
+    let currentSectionIndex = -1;
+  
+    // Função para atualizar o link ativo
+    function updateActiveNavLink() {
+      sections.forEach((section, index) => {
+        const top = section.getBoundingClientRect().top;
+        const bottom = section.getBoundingClientRect().bottom;
+        
+        if (top <= window.innerHeight * 0.3 && bottom >= window.innerHeight * 0.3) {
+          // Se a seção estiver no meio da tela
+          if (currentSectionIndex !== index) {
+            // Se a seção atual for diferente da última, atualize os links
+            navLinks.forEach((link) => link.classList.remove('active-nav-item'));
+            const activeLink = document.querySelector(`nav a[href="#${section.id}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active-nav-item');
+            }
+            currentSectionIndex = index;
+          }
+        }
+      });
+    }
+  
+    // Ouvinte de evento de scroll para atualizar o link ativo
+    window.addEventListener('scroll', updateActiveNavLink);
+  
+    // Lógica para rolagem suave para seções a partir de cliques na navegação
+    navLinks.forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        
+        if (targetSection) {
+          // Rolagem suave para a seção
+          targetSection.scrollIntoView({ behavior: 'smooth' });
+          // Atualize os links ativos após a rolagem
+          navLinks.forEach(link => link.classList.remove('active-nav-item'));
+          this.classList.add('active-nav-item');
+        }
+      });
+    });
+  });
+  
+  
+
+
 document.addEventListener("DOMContentLoaded", function() {
     let hasAnimated = false;
 
