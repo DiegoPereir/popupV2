@@ -38,6 +38,7 @@
     text-decoration: none;
     padding: 0;
     border: 0;
+
     color: var(--color-white);
     font-size: 100%;
     font-family: 'QanelasSoftMedium', sans-serif;
@@ -55,7 +56,6 @@ nav {
     width: 100%;
     height: 90px;
     padding: 38px 38px;
-
     background-color: var(--color-black);
 }
 html {
@@ -63,8 +63,8 @@ html {
   }
   
 .active-nav-item {
-    color: #4CEAD7; /* Mude para a cor que você desejar */
-    border-bottom: 2px solid #4CEAD7; /* Mude para o estilo de borda que desejar */
+    color: var(--color-cyan);
+    border-bottom: 2px solid var(--color-cyan);
   }
 
   
@@ -82,6 +82,128 @@ nav .items-menu {
     flex-direction: row;
     gap: 30px;
 }
+
+
+
+
+
+/* Reset básico para garantir consistência entre navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-logo img {
+    width: 50px;
+    height: auto;
+}
+
+.navbar-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    background-color: var(--color-cyan);
+    ;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+}
+
+.navbar-item {
+    line-height: 40px;
+    margin-left: 20px;
+}
+
+.navbar-links {
+    color: var(--color-white);
+    ;
+    text-decoration: none;
+    padding: 5px 10px;
+    transition: color 0.3s ease-out;
+}
+
+.navbar-links:hover {
+    color:   var(--color-cyan);
+}
+.navbar-menu {
+    /* ... suas outras propriedades ... */
+    z-index: 1000; /* Este valor é geralmente suficiente para ficar acima de outros elementos. */
+}
+
+/* Estilos para telas menores (mobile) */
+@media screen and (max-width: 960px) {
+    .navbar-item {
+        width: 100%; /* Garantir que os itens da lista ocupem a largura total */
+        display: flex; /* Habilitar flexbox para os itens da lista */
+        justify-content: center; /* Centralizar horizontalmente */
+        align-items: center; /* Centralizar verticalmente */
+    }
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px; /* Valor ajustado para posicionar o menu mais abaixo */
+        left: -100%;
+        opacity: 0;
+        transition: all 0.3s ease;
+        /* Removido o background e o z-index aqui porque será aplicado no .active */
+    }
+
+    .navbar-menu.active {
+        background: var(--color-black);
+        left: 0;
+        opacity: 1;
+        transition: all 0.3s ease;
+        z-index: 1;
+        top: 90px; /* Este é o novo valor que fará o menu ativo aparecer mais abaixo */
+    }
+}
+
+/* Animação do hambúrguer para X */
+.navbar-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 
 /* SESSOES */
 
@@ -193,7 +315,7 @@ section {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    background-color: #4CEAD7;
+    background-color:  var(--color-cyan);
 }
 
 #cases .collum-desc {
@@ -461,3 +583,138 @@ section {
 }
 
 /*Responsividade*/
+/* Tamanho base para desktop */
+html {
+    font-size: 16px;
+}
+
+/* Breakpoints para diferentes tamanhos de tela */
+@media (max-width: 1200px) {
+    /* Para tablets horizontais e desktops menores */
+    section {
+        padding: 0 60px;
+    }
+
+    #cases, #clientes .gridClientes {
+        padding: 0 50px;
+    }
+
+    #feedbacks h2, #clientes h2 {
+        font-size: 60px;
+        right: 10%;
+    }
+
+    #insights h2 {
+        font-size: 60px;
+        right: 10%;
+    }
+}
+
+@media (max-width: 992px) {
+    /* Para tablets verticais */
+    nav .items-menu {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #cases, #clientes .gridClientes {
+        padding: 0 20px;
+    }
+
+    #feedbacks, #clientes, #insights {
+        gap: 80px;
+    }
+
+    #feedbacks h2, #clientes h2, #insights h2 {
+        font-size: 50px;
+        right: 5%;
+    }
+
+    #solucoes h1, #cases .collum-main .cases h2, #insights .insights .dados .titulo {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Para dispositivos móveis em paisagem e tablets pequenos */
+    html {
+        font-size: 14px; /* Reduzindo a fonte base */
+    }
+
+    section {
+        padding: 0 30px;
+    }
+
+    #cases, #clientes .gridClientes {
+        padding: 0 15px;
+    }
+
+    nav .logo img, #contato .logo img {
+        height: 60px;
+    }
+
+    #feedbacks .slider {
+        width: 90%;
+    }
+}
+
+@media (max-width: 576px) {
+    /* Para dispositivos móveis em retrato */
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav .logo img {
+        height: 50px;
+    }
+
+    #cases .collum-main, #cases .collum-desc {
+        width: 100%;
+        padding: 0;
+    }
+
+    #cases .collum-main .cases {
+        flex-direction: column;
+    }
+
+    #cases .divisor, #feedbacks .slide-arrow {
+        display: none;
+    }
+
+    #clientes .gridClientes .logoCliente {
+        width: 120px;
+        height: 120px;
+    }
+
+    #feedbacks h2, #clientes h2, #insights h2 {
+        font-size: 40px;
+        right: 0;
+        bottom: 0;
+    }
+
+    #insights .insights, #feedbacks .slider .slides-container .slide .slide-text {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #insights .insights .dados {
+        align-items: center;
+    }
+
+    #solucoes h1, #cases .collum-main .cases h2, #insights .insights .dados .titulo {
+        font-size: 30px;
+    }
+}
+
+/* Garante que as imagens sejam responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Corrige aspectos de imagens de fundo para responsividade */
+#sobre {
+    background-size: cover;
+    background-position: center;
+}

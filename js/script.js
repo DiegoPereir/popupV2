@@ -8,7 +8,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }, { passive: false });
   });
-  
+  //menu hamburguer mobile
+
+// Atualize o script existente com este código
+
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuLinks = document.querySelector('.navbar-menu');
+  const navLinks = document.querySelectorAll('.navbar-links'); // Seleciona todos os links do menu
+
+  mobileMenu.addEventListener('click', function() {
+      mobileMenu.classList.toggle('is-active');
+      menuLinks.classList.toggle('active');
+  });
+
+  // Adiciona evento click para cada link no menu
+  navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+          // Verifica se o menu está ativo antes de tentar fechar
+          if (menuLinks.classList.contains('active')) {
+              mobileMenu.classList.remove('is-active');
+              menuLinks.classList.remove('active');
+          }
+      });
+  });
+});
+
+
+
+
+
+
+
   document.addEventListener("DOMContentLoaded", () => {
     // Seleciona todos os itens da navegação
     const navItems = document.querySelectorAll('nav a'); // Supondo que seus links estejam dentro de uma <nav> e sejam <a>
