@@ -29,6 +29,7 @@
     --color-cyan: #4CEAD7;
     --color-gray: #505050;
     --color-green: #A1FF58;
+    --color-wpp: #4e843d;
 }
 
 
@@ -45,7 +46,9 @@
     vertical-align: baseline;
     box-sizing: border-box;
 }
-
+body{
+    background-color: var(--color-black);
+}
 nav {
     position: fixed;
     display: flex;
@@ -222,6 +225,7 @@ body,
 html {
     scroll-snap-type: y mandatory;
 }
+
 section {
     height: 100vh;
     width: 100%;
@@ -253,48 +257,52 @@ section {
     justify-content: center;
     overflow-x: hidden;
 }
+
 /* Adicione estilos iniciais para os elementos que serão animados */
-#solucoes h1, #solucoes p {
+#solucoes h1,
+#solucoes p {
     opacity: 0;
     transform: translateX(-100%);
-  }
-  
-  #solucoes p {
+}
+
+#solucoes p {
     transform: translateX(100%);
-  }
-  
-  /* Defina as keyframes para as animações de 'entrar' */
-  @keyframes slideInFromLeft {
+}
+
+/* Defina as keyframes para as animações de 'entrar' */
+@keyframes slideInFromLeft {
     0% {
-      transform: translateX(-100%);
-      opacity: 0;
+        transform: translateX(-100%);
+        opacity: 0;
     }
+
     100% {
-      transform: translateX(0);
-      opacity: 1;
+        transform: translateX(0);
+        opacity: 1;
     }
-  }
-  
-  @keyframes slideInFromRight {
+}
+
+@keyframes slideInFromRight {
     0% {
-      transform: translateX(100%);
-      opacity: 0;
+        transform: translateX(100%);
+        opacity: 0;
     }
+
     100% {
-      transform: translateX(0);
-      opacity: 1;
+        transform: translateX(0);
+        opacity: 1;
     }
-  }
-  
-  /* Crie uma classe para iniciar a animação */
-  .animate-in-h1 {
+}
+
+/* Crie uma classe para iniciar a animação */
+.animate-in-h1 {
     animation: slideInFromLeft 1s forwards;
-  }
-  
-  .animate-in-p {
+}
+
+.animate-in-p {
     animation: slideInFromRight 1s forwards;
-  }
-  
+}
+
 #solucoes h1 {
     font-size: 50px;
     letter-spacing: 2px;
@@ -316,41 +324,45 @@ section {
 #cases {
     display: flex;
     flex-direction: row;
-
-    padding: 150px 250px 100px 250px;
+    padding: 150px 10%;
 }
+
 /* Estilos iniciais para os elementos que serão animados */
-.cases, .collum-desc ul {
+.cases,
+.collum-desc ul {
     opacity: 0;
     transform: translateY(100%);
-  }
-  
-  /* Defina as keyframes para as animações de 'subir' */
-  @keyframes slideInFromBottom {
+}
+
+/* Defina as keyframes para as animações de 'subir' */
+@keyframes slideInFromBottom {
     0% {
-      transform: translateY(100%);
-      opacity: 0;
+        transform: translateY(100%);
+        opacity: 0;
     }
+
     100% {
-      transform: translateY(0);
-      opacity: 1;
+        transform: translateY(0);
+        opacity: 1;
     }
-  }
-  
-  /* Crie classes para iniciar as animações */
-  .animate-in {
+}
+
+/* Crie classes para iniciar as animações */
+.animate-in {
     animation: slideInFromBottom 1s forwards;
-  }
-  
-  /* Definir atrasos de animação para elementos subsequentes */
-  .cases:nth-child(2), .collum-desc ul:nth-child(2) {
+}
+
+/* Definir atrasos de animação para elementos subsequentes */
+.cases:nth-child(2),
+.collum-desc ul:nth-child(2) {
     animation-delay: 0.3s;
-  }
-  
-  .cases:nth-child(3), .collum-desc ul:nth-child(3) {
+}
+
+.cases:nth-child(3),
+.collum-desc ul:nth-child(3) {
     animation-delay: 0.6s;
-  }
-  
+}
+
 #cases .collum-main {
     display: flex;
     flex-direction: column;
@@ -366,7 +378,7 @@ section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 40px;
+    gap: 5%;
 }
 
 #cases .collum-main .cases h2 {
@@ -378,14 +390,14 @@ section {
     width: 120px;
     height: 120px;
     object-fit: contain;
-    background-color: var(--color-cyan);
+    filter: grayscale(100) brightness(1000);
 }
 
 #cases .collum-desc {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 100px;
+    gap: 25%;
 
     width: 60%;
     padding-left: 80px;
@@ -393,7 +405,7 @@ section {
 
 #cases .collum-desc ul li {
     font-family: 'QanelasSoftUltraLight', sans-serif;
-    white-space: wrap;
+    white-space: nowrap;
 }
 
 #cases .divisor {
@@ -414,6 +426,7 @@ section {
     align-items: center;
     justify-content: center;
     bottom: 20px;
+    padding: 0 5%;
     gap: 15px;
 }
 
@@ -427,29 +440,7 @@ section {
     padding: 20px 10px;
     gap: 20px;
 }
-#casesCards .gridCases .logoCase:hover::before {
-    background-color: transparent;
-    transition: 0.5s;
-}
-#casesCards .gridCases .logoCase:hover h3,
-#casesCards .gridCases .logoCase:hover p {
-    display: none;
-}
-#casesCards .gridCases .logoCase::before {
-    content: "";
-    background-color: rgba(0, 0, 0, 0.395); /* Cor de sobreposição escura (ajuste conforme necessário) */
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0; /* Coloca a sobreposição atrás do conteúdo */
-}
-#casesCards .gridCases .logoCase h3,
-#casesCards .gridCases .logoCase p,
-#casesCards .gridCases .logoCase span{
-    z-index: 1;
-}
+
 #casesCards .gridCases .logoCase h3,
 #casesCards .gridCases .logoCase p {
     font-size: 12px;
@@ -466,18 +457,30 @@ section {
     gap: 5px;
     font-size: 12px;
 }
+
 #casesCards .gridCases .logoCase span i.fa {
     font-size: 12px;
 }
 
-#casesCards .gridCases #postagem1 {
-    background-image: url('../images/imagem.png');
-    background-size: cover;
-    /* Faz com que a imagem se ajuste dentro do elemento, mantendo a proporção */
-    background-repeat: no-repeat;
-    /* Impede que a imagem se repita */
-    background-position: center;
-    /* Centraliza a imagem no elemento */
+#casesCards .gridCases .logoCase img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    filter: brightness(80%);
+}
+
+#casesCards .gridCases .logoCase img:hover {
+    filter: brightness(100%);
+    transition: 0.3s;
+}
+
+#casesCards .gridCases .logoCase:hover h3,
+#casesCards .gridCases .logoCase:hover p {
+    display: none;
+    transition: 0.3s;
 }
 
 /* SESSÃO INSIGHTS */
@@ -553,20 +556,27 @@ section {
     align-items: center;
     justify-content: center;
     margin: -2.5px;
-    gap: 5px;
-    padding: 0 200px;
+    gap: 10px;
+    padding: 0 10%;
 }
 
 #clientes .gridClientes .logoCliente {
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     object-fit: contain;
-    background-color: #505050;
+    padding: 15px;
+    background-color: #2c2c2c;
+}
+
+#clientes .gridClientes .logoCliente:hover .imgCliente {
+    filter: brightness(100%);
 }
 
 #clientes .gridClientes .logoCliente .imgCliente {
+    transition: 0.3s;
     width: 100%;
     height: 100%;
+    filter: brightness(80%);
 }
 
 /* SESSÃO FEEDBACKS */
@@ -594,7 +604,7 @@ section {
     height: 400px;
     margin: auto;
     overflow: hidden;
-    background-color: #333;
+    background-color: var(--color-black);
 }
 
 #feedbacks .slider .slides-container {
@@ -603,7 +613,7 @@ section {
 }
 
 #feedbacks .slider .slides-container .slide {
-    min-width: 100%;
+    min-width: 100% !important;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -613,8 +623,10 @@ section {
 }
 
 #feedbacks .slider .slides-container .slide .imgFeedback {
-    width: 150px;
-    height: 150px;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    overflow: hidden;
     object-fit: contain;
 }
 
@@ -628,19 +640,22 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 100%;
 }
-
 #feedbacks .slider .slides-container .slide .slide-text h2,
 #feedbacks .slider .slides-container .slide .slide-text p {
-    opacity: 0.7;
     font-family: 'QanelasSoftUltraLight', sans-serif;
-    font-size: 14px;
     text-align: center;
     top: 0px;
     right: 0px;
 }
-
+#feedbacks .slider .slides-container .slide .slide-text h2{
+    font-size: 18px;
+}
+#feedbacks .slider .slides-container .slide .slide-text p{
+    font-size: 14px;
+    opacity: 0.7;
+}
 #feedbacks .slider .slides-container .slide .slide-text h4 {
     font-family: 'QanelasSoftMedium', sans-serif;
     font-size: 15px;
@@ -653,16 +668,30 @@ section {
     background: none;
     border: none;
     color: white;
-    font-size: 70px;
+    font-size: 25px!important;
     cursor: pointer;
+    z-index: 99;
+}
+
+#feedbacks .left-arrow:hover,
+#feedbacks .right-arrow:hover {
+    transition: 0.3s;
 }
 
 #feedbacks .left-arrow {
     left: 100px;
 }
 
+#feedbacks .left-arrow:hover {
+    left: 95px;
+}
+
 #feedbacks .right-arrow {
     right: 100px;
+}
+
+#feedbacks .right-arrow:hover {
+    right: 95px;
 }
 
 /* Optional: Add some transition effect */
@@ -691,6 +720,7 @@ section {
 #contato .contato h2 {
     font-size: 80px;
     letter-spacing: 2px;
+    white-space: nowrap;
 }
 
 #contato .contato .redesSociais {
@@ -703,22 +733,28 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--color-white);
+    width: 35px;
+    height: 35px;
+    border: 2px solid var(--color-white);
     border-radius: 50%;
 }
-#contato .contato .redesSociais .iconsSociais:hover{
+
+#contato .contato .redesSociais .iconsSociais .fab {
+    font-size: 20px;
+}
+
+#contato .contato .redesSociais .iconsSociais:hover {
     transition: 0.3s;
     transform: translateY(-5px);
-    background-color: var(--color-green);
 }
+
 #contato .copyright {
     display: flex;
     align-items: center;
     flex-direction: column;
     height: 20%;
     gap: 10px;
+    text-align: center;
 }
 
 #contato .copyright span {
@@ -735,154 +771,6 @@ section {
     width: 100%;
 }
 
-/*Responsividade*/
-/* Tamanho base para desktop */
-html {
-    font-size: 16px;
-}
-
-/* Breakpoints para diferentes tamanhos de tela */
-@media (max-width: 1200px) {
-
-    /* Para tablets horizontais e desktops menores */
-    section {
-        padding: 0 60px;
-    }
-
-    #cases,
-    #clientes .gridClientes {
-        padding: 0 50px;
-    }
-
-    #feedbacks h2,
-    #clientes h2 {
-        font-size: 60px;
-        right: 10%;
-    }
-
-    #insights h2 {
-        font-size: 60px;
-        right: 10%;
-    }
-}
-
-@media (max-width: 992px) {
-
-    /* Para tablets verticais */
-    nav .items-menu {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #cases,
-    #clientes .gridClientes {
-        padding: 0 20px;
-    }
-
-    #feedbacks,
-    #clientes,
-    #insights {
-        gap: 80px;
-    }
-
-    #feedbacks h2,
-    #clientes h2,
-    #insights h2 {
-        font-size: 50px;
-        right: 5%;
-    }
-
-    #solucoes h1,
-    #cases .collum-main .cases h2,
-    #insights .insights .dados .titulo {
-        font-size: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-
-    /* Para dispositivos móveis em paisagem e tablets pequenos */
-    html {
-        font-size: 14px;
-        /* Reduzindo a fonte base */
-    }
-
-    section {
-        padding: 0 30px;
-    }
-
-    #cases,
-    #clientes .gridClientes {
-        padding: 0 15px;
-    }
-
-    nav .logo img,
-    #contato .logo img {
-        height: 60px;
-    }
-
-    #feedbacks .slider {
-        width: 90%;
-    }
-}
-
-@media (max-width: 576px) {
-
-    /* Para dispositivos móveis em retrato */
-    nav {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    nav .logo img {
-        height: 50px;
-    }
-
-    #cases .collum-main,
-    #cases .collum-desc {
-        width: 100%;
-        padding: 0;
-    }
-
-    #cases .collum-main .cases {
-        flex-direction: column;
-    }
-
-    #cases .divisor,
-    #feedbacks .slide-arrow {
-        display: none;
-    }
-
-    #clientes .gridClientes .logoCliente {
-        width: 120px;
-        height: 120px;
-    }
-
-    #feedbacks h2,
-    #clientes h2,
-    #insights h2 {
-        font-size: 40px;
-        right: 0;
-        bottom: 0;
-    }
-
-    #insights .insights,
-    #feedbacks .slider .slides-container .slide .slide-text {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    #insights .insights .dados {
-        align-items: center;
-    }
-
-    #solucoes h1,
-    #cases .collum-main .cases h2,
-    #insights .insights .dados .titulo {
-        font-size: 30px;
-    }
-}
-
 /* Garante que as imagens sejam responsivas */
 img {
     max-width: 100%;
@@ -896,11 +784,44 @@ img {
 }
 
 @keyframes shakeRotate {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(-5deg); }
-    50% { transform: rotate(5deg); }
-    75% { transform: rotate(-5deg); }
-  }
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    75% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(-5px);
+    }
+
+    50% {
+        transform: translateY(5px);
+    }
+
+    75% {
+        transform: translateY(-5px);
+    }
+}
 
 #whatsapp-button {
     display: flex;
@@ -911,21 +832,231 @@ img {
     height: 80px;
     bottom: 50px;
     right: 50px;
-    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    z-index: 1000;
     border-radius: 50%;
     border: 3px solid white;
-  }
-  
-  #whatsapp-button i.fab {
-    font-size: 50px;
-    transition: transform 0.3s ease; /* um efeito suave ao passar o mouse */
-  }
-  
-  #whatsapp-button:hover i.fab,
-  #whatsapp-button:hover{
-    color: var(--color-green);
-    border-color: var(--color-green);
-    background-color: var(--color-white);
-    animation: shakeRotate 0.5s ease-in-out;
 }
-  
+
+#whatsapp-button i.fab {
+    font-size: 50px;
+    transition: transform 0.3s ease;
+}
+
+#whatsapp-button:hover i.fab,
+#whatsapp-button:hover {
+    transition: 0.3s;
+    border-color: var(--color-wpp);
+    background-color: var(--color-wpp);
+    animation: shakeRotate 0.9s ease-in-out;
+}
+
+#whatsapp-button:hover {
+    animation: shake 0.5s ease-in-out;
+}
+
+
+
+
+
+
+
+@media (max-width: 1500px) {
+    /* SESSAO CASES */
+
+    #cases .collum-main .cases h2 {
+        font-size: 25px;
+    }
+
+    #cases .collum-main .imgCases {
+        width: 90px;
+        height: 90px;
+    }
+
+    #cases .collum-desc {
+        gap: 20%;
+    }
+
+    #cases .collum-desc ul li {
+        font-size: 14px;
+    }
+
+    #casesCards .gridCases {
+        padding: 0 8%;
+    }
+
+    #casesCards .gridCases .logoCase {
+        width: 200px;
+        height: 250px;
+    }
+
+    /* SESSÂO CLIENTES */
+    #clientes .gridClientes {
+        padding: 0 7%;
+    }
+
+    /* SESSÃO INSIGHTS */
+    #insights h2 {
+        font-size: 50px;
+    }
+
+    #insights .insights .dados .numero {
+        font-size: 50px;
+    }
+
+    #insights .insights .dados .titulo {
+        font-size: 35px;
+    }
+
+    #clientes h2 {
+        font-size: 50px;
+    }
+
+    /* SESSÃO FEEDBACKS */
+
+    #feedbacks h2 {
+        font-size: 50px;
+    }
+
+    #feedbacks .slide-arrow {
+        font-size: 50px;
+    }
+
+    /* SESSAO CONTATO */
+    #contato .contato h2 {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 1300px) {
+    /* SESSAO CASES */
+
+    #cases .collum-main .cases h2 {
+        font-size: 25px;
+    }
+
+    #cases .collum-main .imgCases {
+        width: 90px;
+        height: 90px;
+    }
+
+    #cases .collum-desc {
+        gap: 20%;
+    }
+
+    #cases .collum-desc ul li {
+        font-size: 14px;
+    }
+
+    #casesCards .gridCases {
+        padding: 0 6%;
+    }
+
+    #casesCards .gridCases .logoCase {
+        width: 175px;
+        height: 225px;
+    }
+
+    #casesCards .gridCases .logoCase h3,
+    #casesCards .gridCases .logoCase p {
+        font-size: 10px;
+    }
+
+    /* SESSÂO CLIENTES */
+    #clientes .gridClientes {
+        padding: 0 12%;
+    }
+
+    #clientes h2 {
+        font-size: 50px;
+    }
+
+    #clientes .gridClientes .logoCliente {
+        width: 130px;
+        height: 130px;
+    }
+
+    /* SESSÃO INSIGHTS */
+    #insights h2 {
+        font-size: 50px;
+    }
+
+    #insights .insights .dados .numero {
+        font-size: 40px;
+    }
+    #insights .insights .dados .expo {
+        font-size: 32px !important;
+    }
+    #insights .insights .dados .titulo {
+        font-size: 28px;
+    }
+
+
+
+    /* SESSÃO FEEDBACKS */
+
+    #feedbacks h2 {
+        font-size: 50px;
+    }
+
+    #feedbacks .slider {
+        height: 320px;
+    }
+
+    #feedbacks .slider .slides-container .slide .imgFeedback {
+        width: 120px;
+        height: 120px;
+
+        #feedbacks .slide-arrow {
+            font-size: 50px;
+        }
+
+        /* SESSAO CONTATO */
+        #contato .contato h2 {
+            font-size: 50px;
+        }
+    }
+}
+@media (max-width: 1111px) {
+    #cases .collum-main .cases .tituloCase{
+        font-size: 16px;
+    
+    }
+    #cases .collum-main{
+        width: 30%;
+        padding-right: 50px;
+    }
+    #cases .collum-desc{
+        width: 70%;
+        padding-left: 40px;
+    }
+    #cases .collum-desc ul li{
+        white-space: wrap;
+        font-size: 12px;
+    }
+    #casesCards{
+        padding: 0px;
+    }
+    #casesCards .gridCases {
+        padding: 0 0;
+    }
+    #clientes .gridClientes {
+        padding: 0;
+    }
+    html,body{
+        scroll-snap-type: none!important;
+    }
+    section{
+        scroll-snap-align: none!important;
+    }
+    #insights{
+        margin-top: 100px;
+        gap: 100px;
+    }
+    #insights .insights {
+        flex-direction: column;
+        gap: 50px;
+    }
+    #clientes{
+        margin-top: 100px;
+    }
+}

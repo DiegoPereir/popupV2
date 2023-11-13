@@ -1,17 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener('wheel', event => {
-    event.preventDefault();
+    event.preventDefault(); // Previne o comportamento padrão de rolagem
+
+    // Calcula o valor de rolagem desejado
+    const scrollAmount = event.deltaY < 0 ? -window.innerHeight / 2 : window.innerHeight / 2;
+
     window.scrollBy({
-      top: event.deltaY < 0 ? -800 : 1000,
+      top: scrollAmount,
       left: 0,
       behavior: 'smooth'
     });
   }, { passive: false });
 });
-//menu hamburguer mobile
 
-// Atualize o script existente com este código
 
+
+//menu hamburguer mobile----------------------------------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
   const mobileMenu = document.getElementById('mobile-menu');
   const menuLinks = document.querySelector('.navbar-menu');
@@ -34,12 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-
-
-
-
-
-
+// efeito active navvbar dependendo da sessao---------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
   // Seleciona todos os itens da navegação
   const navItems = document.querySelectorAll('nav a'); // Supondo que seus links estejam dentro de uma <nav> e sejam <a>
@@ -72,13 +71,24 @@ document.addEventListener('DOMContentLoaded', () => {
     sections.forEach((section, index) => {
       const top = section.getBoundingClientRect().top;
       const bottom = section.getBoundingClientRect().bottom;
-
+  
       if (top <= window.innerHeight * 0.3 && bottom >= window.innerHeight * 0.3) {
         // Se a seção estiver no meio da tela
         if (currentSectionIndex !== index) {
           // Se a seção atual for diferente da última, atualize os links
           navLinks.forEach((link) => link.classList.remove('active-nav-item'));
-          const activeLink = document.querySelector(`nav a[href="#${section.id}"]`);
+  
+          // Aqui, nós ajustamos a lógica para verificar dois IDs diferentes
+          let activeLink;
+          if (section.id === "cases" || section.id === "casesCards") {
+            // Se qualquer um dos IDs corresponder, selecione o link com o href para '#case'
+            activeLink = document.querySelector('nav a[href="#cases"]');
+          } else {
+            // Caso contrário, selecione o link como normalmente
+            activeLink = document.querySelector(`nav a[href="#${section.id}"]`);
+          }
+  
+          // Se um link ativo for encontrado, adicione a classe 'active-nav-item'
           if (activeLink) {
             activeLink.classList.add('active-nav-item');
           }
@@ -87,11 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // Ouvinte de evento de scroll para atualizar o link ativo
+  
+  // Continua a adicionar o ouvinte de evento de scroll
   window.addEventListener('scroll', updateActiveNavLink);
+  
 
-  // Lógica para rolagem suave para seções a partir de cliques na navegação
+  // Lógica para rolagem suave para seções a partir de cliques na navegação-----------------------------------------------------------------------------
   navLinks.forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -110,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
+// Animaçao Soluções --------------------------------------------------------------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
   let hasAnimated = false;
@@ -179,35 +190,61 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+// Carousel dos feedbacks ------------------------------------------------------------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function () {
   const slidesContainer = document.querySelector('#feedbacks .slides-container');
   const slides = document.querySelectorAll('#feedbacks .slide');
+  const leftArrow = document.querySelector('#feedbacks .left-arrow');
+  const rightArrow = document.querySelector('#feedbacks .right-arrow');
   let currentSlide = 0;
+  let slideWidth = slides[0].getBoundingClientRect().width;
+  const totalSlides = slides.length;
 
   function updateSlidePosition() {
-    const slideWidth = slides[0].getBoundingClientRect().width; // Largura exata, incluindo escala de zoom
-    slidesContainer.style.transform = `translateX(${-slideWidth * currentSlide}px)`;
+    const containerWidth = slidesContainer.getBoundingClientRect().width;
+    const maxOffset = (totalSlides - 1) * slideWidth;
+    const offset = Math.min(maxOffset, containerWidth / 2 - slideWidth / 2 - currentSlide * slideWidth);
+    slidesContainer.style.transform = `translateX(${offset}px)`;
   }
 
-  document.querySelector('#feedbacks .left-arrow').addEventListener('click', function () {
-    currentSlide = (currentSlide === 0) ? slides.length - 1 : currentSlide - 1;
+  function updateSlideDimensions() {
+    slideWidth = slides[0].getBoundingClientRect().width;
     updateSlidePosition();
-  });
+  }
 
-  document.querySelector('#feedbacks .right-arrow').addEventListener('click', function () {
-    currentSlide = (currentSlide === slides.length - 1) ? 0 : currentSlide + 1;
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
     updateSlidePosition();
-  });
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlidePosition();
+  }
+
+  leftArrow.addEventListener('click', prevSlide);
+  rightArrow.addEventListener('click', nextSlide);
 
   // Atualiza a posição inicial do slide após todas as imagens serem carregadas
-  window.addEventListener('load', updateSlidePosition);
+  window.addEventListener('load', function () {
+    updateSlideDimensions();
+  });
+
+  // Atualiza a posição do slide ao redimensionar a janela
+  window.addEventListener('resize', function () {
+    updateSlideDimensions();
+  });
+
+  // Alterna para o próximo slide a cada 3 segundos
+  setInterval(nextSlide, 3000);
 });
 
 
 
 
 
+
+// animação sobre -----------------------------------------------------------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function() {
   var section = document.querySelector("#solucoes");
 
@@ -264,30 +301,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
   observer.observe(section);
 });
-
-
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//   const accessToken = 'SEU_ACCESS_TOKEN'; // Você deve obter um token de acesso válido
-//   const userId = 'USER_ID'; // O ID do usuário do Instagram cujas postagens você deseja mostrar
-//   const feedContainer = document.querySelector('.instagram-feed');
-
-//   fetch(`https://graph.instagram.com/v11.0/${userId}/media?fields=id,caption,media_url,permalink&access_token=${accessToken}&limit=8`)
-//     .then(response => response.json())
-//     .then(data => {
-//       data.data.forEach(post => {
-//         const postElement = document.createElement('div');
-//         postElement.classList.add('instagram-post');
-//         postElement.innerHTML = `
-//           <a href="${post.permalink}" target="_blank">
-//             <img src="${post.media_url}" alt="${post.caption}" />
-//           </a>
-//         `;
-//         feedContainer.appendChild(postElement);
-//       });
-//     })
-//     .catch(error => {
-//       console.error('Erro ao buscar postagens do Instagram:', error);
-//     });
-// });
