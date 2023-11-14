@@ -1118,7 +1118,9 @@ img {
     section {
         padding: 0 15px;
     }
-
+    #cases{
+        margin-bottom: 100px;
+    }
     #solucoes h1 {
         font-size: 22px;
         margin-bottom: 50px;
@@ -1158,6 +1160,12 @@ img {
     #feedbacks .left-arrow {
         left: 50px;
     }
+    #feedbacks .right-arrow:hover {
+        right: 45px;
+    }
+    #feedbacks .left-arrow:hover {
+        left: 45px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1181,5 +1189,11 @@ img {
     }
     #feedbacks .left-arrow {
         left: 20px;
+    }
+    #feedbacks .right-arrow:hover {
+        right: 15px;
+    }
+    #feedbacks .left-arrow:hover {
+        left: 15px;
     }
 }
