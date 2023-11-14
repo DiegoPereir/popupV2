@@ -1152,6 +1152,12 @@ img {
         width: 90px;
         height: 90px;
     }
+    #feedbacks .right-arrow {
+        right: 50px;
+    }
+    #feedbacks .left-arrow {
+        left: 50px;
+    }
 }
 
 @media (max-width: 500px) {
@@ -1169,5 +1175,11 @@ img {
     #casesCards .gridCases .logoCase {
         width: 150px;
         height: 200px;
+    }
+    #feedbacks .right-arrow {
+        right: 20px;
+    }
+    #feedbacks .left-arrow {
+        left: 20px;
     }
 }
