@@ -178,6 +178,11 @@ nav .items-menu {
         align-items: center;
         /* Centralizar verticalmente */
     }
+    .active-nav-item,
+    .navbar-links.active-nav-item {
+        color: var(--color-cyan);
+        border-bottom: none;
+    }
 
     .navbar-toggle {
         display: block;
@@ -197,13 +202,16 @@ nav .items-menu {
     }
 
     .navbar-menu.active {
+        display: flex;
         background: var(--color-black);
         left: 0;
+        height: 100vh;
         opacity: 1;
         transition: all 0.3s ease;
         z-index: 1;
         top: 90px;
-        /* Este é o novo valor que fará o menu ativo aparecer mais abaixo */
+        justify-content: space-around;
+        align-items: center;
     }
 }
 

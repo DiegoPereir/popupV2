@@ -105,20 +105,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // Lógica para rolagem suave para seções a partir de cliques na navegação-----------------------------------------------------------------------------
   navLinks.forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
 
-      if (targetSection) {
-        // Rolagem suave para a seção
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-        // Atualize os links ativos após a rolagem
-        navLinks.forEach(link => link.classList.remove('active-nav-item'));
-        this.classList.add('active-nav-item');
-      }
+        if (targetSection) {
+            // Rolagem suave para a seção
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Atualize os links ativos após a rolagem
+            navLinks.forEach(link => link.classList.remove('active-nav-item'));
+            this.classList.add('active-nav-item');
+        }
     });
-  });
 });
+
+});
+
 
 
 // Animaçao Soluções --------------------------------------------------------------------------------------------------------------------
