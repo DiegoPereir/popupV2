@@ -213,13 +213,12 @@ nav .items-menu {
         display: flex;
         background: var(--color-black);
         left: 0;
-        height: calc(100vh - 99px);
+        height: fit-content;
         opacity: 1;
         transition: all 0.3s ease;
         z-index: 1001;
         top: 90px;
-        padding-bottom: 10px;
-        justify-content: space-evenly;
+        justify-content: space-between;
         align-items: center;
     }
 }
