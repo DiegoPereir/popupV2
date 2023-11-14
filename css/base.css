@@ -213,7 +213,7 @@ nav .items-menu {
         display: flex;
         background: var(--color-black);
         left: 0;
-        height: calc(100vh - 90px);
+        height: calc(100vh - 99px);
         opacity: 1;
         transition: all 0.3s ease;
         z-index: 1001;
