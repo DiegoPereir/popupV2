@@ -168,6 +168,15 @@ nav .items-menu {
 
 /* Estilos para telas menores (mobile) */
 @media screen and (max-width: 960px) {
+
+    #whatsapp-button i.fab,
+    #whatsapp-button {
+        transition: 0.3s;
+        border-color: var(--color-wpp)!important;
+        background-color: var(--color-wpp);
+        animation: shakeRotate 0.9s ease-in-out;
+    }
+
     .navbar-item {
         width: 100%;
         /* Garantir que os itens da lista ocupem a largura total */
@@ -178,6 +187,7 @@ nav .items-menu {
         align-items: center;
         /* Centralizar verticalmente */
     }
+
     .active-nav-item,
     .navbar-links.active-nav-item {
         color: var(--color-cyan);
@@ -194,11 +204,9 @@ nav .items-menu {
         width: 100%;
         position: absolute;
         top: 80px;
-        /* Valor ajustado para posicionar o menu mais abaixo */
         left: -100%;
         opacity: 0;
         transition: all 0.3s ease;
-        /* Removido o background e o z-index aqui porque será aplicado no .active */
     }
 
     .navbar-menu.active {
@@ -1126,9 +1134,11 @@ img {
     section {
         padding: 0 15px;
     }
-    #cases{
+
+    #cases {
         margin-bottom: 100px;
     }
+
     #solucoes h1 {
         font-size: 22px;
         margin-bottom: 50px;
@@ -1145,6 +1155,7 @@ img {
     #contato .contato h2 {
         font-size: 40px;
     }
+
     #contato .copyright span {
         font-size: 12px;
     }
@@ -1158,19 +1169,24 @@ img {
     #whatsapp-button i.fab {
         font-size: 30px;
     }
+
     #feedbacks .slider .slides-container .slide .imgFeedback {
         width: 90px;
         height: 90px;
     }
+
     #feedbacks .right-arrow {
         right: 50px;
     }
+
     #feedbacks .left-arrow {
         left: 50px;
     }
+
     #feedbacks .right-arrow:hover {
         right: 45px;
     }
+
     #feedbacks .left-arrow:hover {
         left: 45px;
     }
@@ -1188,19 +1204,24 @@ img {
     #cases .casesMobile .case ul li {
         font-size: 12px;
     }
+
     #casesCards .gridCases .logoCase {
         width: 150px;
         height: 200px;
     }
+
     #feedbacks .right-arrow {
         right: 20px;
     }
+
     #feedbacks .left-arrow {
         left: 20px;
     }
+
     #feedbacks .right-arrow:hover {
         right: 15px;
     }
+
     #feedbacks .left-arrow:hover {
         left: 15px;
     }
