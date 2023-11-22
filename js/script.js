@@ -108,17 +108,25 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         const targetSection = document.querySelector(targetId);
+        const navHeight = document.querySelector('.navbar').offsetHeight; // Get the height of the navigation bar
 
         if (targetSection) {
-            // Rolagem suave para a seção
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+            const sectionTop = targetSection.getBoundingClientRect().top; // Get the top position of the target section
+            const offsetTop = sectionTop + window.pageYOffset - navHeight; // Calculate the position to scroll to
 
-            // Atualize os links ativos após a rolagem
+            // Smooth scroll to the adjusted position
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+
+            // Update active links after scrolling
             navLinks.forEach(link => link.classList.remove('active-nav-item'));
             this.classList.add('active-nav-item');
         }
     });
 });
+
 
 });
 

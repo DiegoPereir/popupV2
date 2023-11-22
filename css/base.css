@@ -166,62 +166,7 @@ nav .items-menu {
     /* Este valor é geralmente suficiente para ficar acima de outros elementos. */
 }
 
-/* Estilos para telas menores (mobile) */
-@media screen and (max-width: 960px) {
 
-    #whatsapp-button i.fab,
-    #whatsapp-button {
-        transition: 0.3s;
-        border-color: var(--color-wpp)!important;
-        background-color: var(--color-wpp);
-        animation: shakeRotate 0.9s ease-in-out;
-    }
-
-    .navbar-item {
-        width: 100%;
-        /* Garantir que os itens da lista ocupem a largura total */
-        display: flex;
-        /* Habilitar flexbox para os itens da lista */
-        justify-content: center;
-        /* Centralizar horizontalmente */
-        align-items: center;
-        /* Centralizar verticalmente */
-    }
-
-    .active-nav-item,
-    .navbar-links.active-nav-item {
-        color: var(--color-cyan);
-        border-bottom: none;
-    }
-
-    .navbar-toggle {
-        display: block;
-    }
-
-    .navbar-menu {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        top: 80px;
-        left: -100%;
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .navbar-menu.active {
-        display: flex;
-        background: var(--color-black);
-        left: 0;
-        height: fit-content;
-        opacity: 1;
-        transition: all 0.3s ease;
-        z-index: 1001;
-        top: 90px;
-        justify-content: space-between;
-        align-items: center;
-    }
-}
 
 /* Animação do hambúrguer para X */
 .navbar-toggle.is-active .bar:nth-child(1) {
@@ -428,6 +373,7 @@ section {
 #cases .collum-desc ul li {
     font-family: 'QanelasSoftUltraLight', sans-serif;
     white-space: nowrap;
+    text-align: justify;
 }
 
 #cases .divisor {
@@ -494,14 +440,15 @@ section {
     filter: brightness(80%);
 }
 
-#casesCards .gridCases .logoCase img:hover {
+#casesCards .gridCases .logoCase img:hover,
+#casesCards .gridCases .logoCase img:active {
     filter: brightness(100%);
     transition: 0.3s;
 }
 
 #casesCards .gridCases .logoCase:hover h3,
 #casesCards .gridCases .logoCase:hover p {
-    display: none;
+    opacity: 0;
     transition: 0.3s;
 }
 
@@ -889,8 +836,8 @@ img {
 
 
 @media (max-width: 1500px) {
-    /* SESSAO CASES */
 
+    /* SESSAO CASES */
     #cases .collum-main .cases h2 {
         font-size: 25px;
     }
@@ -917,10 +864,12 @@ img {
         height: 250px;
     }
 
+
     /* SESSÂO CLIENTES */
     #clientes .gridClientes {
         padding: 0 7%;
     }
+
 
     /* SESSÃO INSIGHTS */
     #insights h2 {
@@ -956,8 +905,8 @@ img {
 }
 
 @media (max-width: 1300px) {
-    /* SESSAO CASES */
 
+    /* SESSAO CASES */
     #cases .collum-main .cases h2 {
         font-size: 25px;
     }
@@ -989,6 +938,7 @@ img {
         font-size: 10px;
     }
 
+
     /* SESSÂO CLIENTES */
     #clientes .gridClientes {
         padding: 0 12%;
@@ -1002,6 +952,7 @@ img {
         width: 130px;
         height: 130px;
     }
+
 
     /* SESSÃO INSIGHTS */
     #insights h2 {
@@ -1021,7 +972,6 @@ img {
     }
 
 
-
     /* SESSÃO FEEDBACKS */
 
     #feedbacks h2 {
@@ -1035,19 +985,21 @@ img {
     #feedbacks .slider .slides-container .slide .imgFeedback {
         width: 120px;
         height: 120px;
-
-        #feedbacks .slide-arrow {
-            font-size: 50px;
-        }
-
-        /* SESSAO CONTATO */
-        #contato .contato h2 {
-            font-size: 50px;
-        }
     }
+
+    #feedbacks .slide-arrow {
+        font-size: 50px;
+    }
+
+    /* SESSAO CONTATO */
+    #contato .contato h2 {
+        font-size: 50px;
+    }
+
 }
 
 @media (max-width: 1111px) {
+    /* SESSAO CASES */
     #cases {
         justify-content: center;
         align-items: center;
@@ -1098,6 +1050,11 @@ img {
         padding: 0 0;
     }
 
+
+    /* SESSAO CLIENTES */
+    #clientes {
+        margin-top: 100px;
+    }
     #clientes {
         height: fit-content;
         margin: 10% 0;
@@ -1116,6 +1073,7 @@ img {
         scroll-snap-align: none !important;
     }
 
+    /* SESSAO INSIGHTS */
     #insights {
         margin-top: 100px;
         gap: 100px;
@@ -1125,10 +1083,62 @@ img {
         flex-direction: column;
         gap: 50px;
     }
+}
 
-    #clientes {
-        margin-top: 100px;
+@media (max-width: 960px) {
+
+    /* NAVBAR */
+    .navbar-item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    .active-nav-item,
+    .navbar-links.active-nav-item {
+        color: var(--color-cyan);
+        border-bottom: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+    }
+
+    .navbar-menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 80px;
+        left: -100%;
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-menu.active {
+        display: flex;
+        background: var(--color-black);
+        left: 0;
+        height: fit-content;
+        opacity: 1;
+        transition: all 0.3s ease;
+        z-index: 1001;
+        top: 90px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    /* BOTAO WPP */
+    #whatsapp-button i.fab,
+    #whatsapp-button {
+        transition: 0.3s;
+        border-color: var(--color-wpp) !important;
+        background-color: var(--color-wpp);
+        animation: shakeRotate 0.9s ease-in-out;
+    }
+
 }
 
 @media (max-width: 700px) {
